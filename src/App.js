@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import UserContext from './UserContext';
+import UserContext from './utilities/UserContext';
 import { useEffect } from 'react';
 import axios from 'axios';
 
