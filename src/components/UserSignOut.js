@@ -1,5 +1,5 @@
 const UserSignOut = () => {
-	return <div></div>;
+	return <div>UserSignOut</div>;
 };
 
 export default UserSignOut;

@@ -1,10 +1,5 @@
-
 const UpdateCourse = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+	return <div>UpdateCourse</div>;
+};
 
-export default UpdateCourse
+export default UpdateCourse;

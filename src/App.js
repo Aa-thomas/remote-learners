@@ -1,9 +1,14 @@
-import './App.css';
+import 'styles/App.css';
 import { useEffect } from 'react';
 import axios from 'axios';
-import Courses from '@components/Courses';
-import { Route } from 'react-router-dom';
-import CreateCourse from '@components/CreateCourse';
+import Courses from 'components/Courses';
+import { Route, Routes } from 'react-router-dom';
+import CreateCourse from 'components/CreateCourse';
+import UpdateCourse from 'components/UpdateCourse';
+import CourseDetail from 'components/CourseDetail';
+import UserSignIn from 'components/UserSignIn';
+import UserSignOut from 'components/UserSignOut';
+import UserSignUp from 'components/UserSignUp';
 
 function App() {
 	useEffect(() => {
@@ -14,6 +19,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<p>hello</p>
 			<Routes>
 				<Route path="/" element={<Courses />} />
 				<Route path="/courses/create" element={<CreateCourse />} />

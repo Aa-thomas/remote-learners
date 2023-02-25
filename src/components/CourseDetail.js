@@ -1,10 +1,5 @@
-
 const CourseDetail = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+	return <div></div>;
+};
 
-export default CourseDetail
+export default CourseDetail;
