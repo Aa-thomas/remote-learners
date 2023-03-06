@@ -1,7 +1,6 @@
 .App {
-  text-align: center;
-  font-family:"Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded", "Trebuchet MS", Helvetica, Arial, sans-serif;
-    background: #edeff0;
+	text-align: center;
+	font-family: 'Gotham Rounded A', 'Gotham Rounded B', 'Gotham Rounded',
+		'Trebuchet MS', Helvetica, Arial, sans-serif;
+	background: #edeff0;
 }
-
-

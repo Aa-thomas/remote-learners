@@ -9,6 +9,16 @@ import CourseDetail from 'components/CourseDetail';
 import UserSignIn from 'components/UserSignIn';
 import UserSignOut from 'components/UserSignOut';
 import UserSignUp from 'components/UserSignUp';
+import NotFound from 'components/NotFound';
+import Header from 'components/Header';
+import { withContext } from 'context/UserContext';
+import PrivateRoute from './PrivateRoute';
+
+const UserSignUpWithContext = withContext(UserSignUp);
+const UserSignInWithContext = withContext(UserSignIn);
+const HeaderWithContext = withContext(Header);
+const AuthWithContext = withContext(Authenticated);
+const UserSignOutWithContext = withContext(UserSignOut);
 
 function App() {
 	useEffect(() => {
@@ -19,15 +29,16 @@ function App() {
 
 	return (
 		<div className="App">
-			<p>hello</p>
+			<HeaderWithContext />
 			<Routes>
 				<Route path="/" element={<Courses />} />
 				<Route path="/courses/create" element={<CreateCourse />} />
 				<Route path="/courses/:id/update" element={<UpdateCourse />} />
 				<Route path="/courses/:id" element={<CourseDetail />} />
-				<Route path="/signin" element={<UserSignIn />} />
-				<Route path="/signup" element={<UserSignUp />} />
-				<Route path="/signout" element={<UserSignOut />} />
+				<Route path="/signin" element={<UserSignInWithContext />} />
+				<Route path="/signup" element={<UserSignUpWithContext />} />
+				<Route path="/signout" element={<UserSignOutWithContext />} />
+				<Route path="/notfound" element={<NotFound />} />
 			</Routes>
 		</div>
 	);
