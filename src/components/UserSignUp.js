@@ -74,22 +74,25 @@ const UserSignUp = ({ context, history }) => {
 					submitButtonText="Sign Up"
 					elements={() => (
 						<>
-							<input
-								id="firstName"
-								name="firstName"
-								type="text"
-								value={firstName}
-								onChange={(e) => handleChange(e)}
-								placeholder="First Name"
-							/>
-							<input
-								id="lastName"
-								name="lastName"
-								type="text"
-								value={lastName}
-								onChange={(e) => handleChange(e)}
-								placeholder="Last Name"
-							/>
+							<div className="name-flex">
+								{' '}
+								<input
+									id="firstName"
+									name="firstName"
+									type="text"
+									value={firstName}
+									onChange={(e) => handleChange(e)}
+									placeholder="First Name"
+								/>
+								<input
+									id="lastName"
+									name="lastName"
+									type="text"
+									value={lastName}
+									onChange={(e) => handleChange(e)}
+									placeholder="Last Name"
+								/>
+							</div>
 							<input
 								id="email"
 								name="email"

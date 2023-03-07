@@ -16,7 +16,7 @@ const Form = (props) => {
 			<ErrorsDisplay errors={errors} />
 			<form onSubmit={handleSubmit}>
 				{elements()}
-				<div className="pad-bottom">
+				<div className="form--buttons">
 					<button className="button" type="submit">
 						{submitButtonText}
 					</button>
@@ -40,7 +40,9 @@ function ErrorsDisplay({ errors }) {
 				<div className="validation--errors">
 					<ul>
 						{errors.map((error, i) => (
-							<li key={i}>{error}</li>
+							<li key={i} className="shake-horizontal">
+								{error}
+							</li>
 						))}
 					</ul>
 				</div>
