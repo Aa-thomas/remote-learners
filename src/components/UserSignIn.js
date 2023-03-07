@@ -39,7 +39,7 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 					...prevState,
 					errors: ['Sign-in was unsuccessful'],
 				}));
-				console.log(err);
+				console.log('Sign In Error', err);
 			});
 	};
 
