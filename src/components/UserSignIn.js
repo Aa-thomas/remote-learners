@@ -48,8 +48,8 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 	};
 
 	return (
-		<div className="bounds">
-			<div className="grid-33 centered signin">
+		<div className="wrapper">
+			<div className="form--centered">
 				<h1>Sign In</h1>
 				<Form
 					cancel={handleCancel}

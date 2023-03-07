@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 const Header = ({ context }) => {
 	const authUser = context.authenticatedUser;
 	return (
-		<div className="header">
-			<div className="bounds">
-				<h1 className="header--logo">MyAuth</h1>
+		<header>
+			<div className="wrapper">
+				<h1 className="header--logo">Remote Learning Managment System</h1>
 				<nav>
 					{authUser ? ( // if user is signed in, then show the following:
 						<>
@@ -29,7 +29,7 @@ const Header = ({ context }) => {
 					)}
 				</nav>
 			</div>
-		</div>
+		</header>
 	);
 };
 

@@ -28,7 +28,7 @@ function App() {
 	});
 
 	return (
-		<div className="App">
+		<main>
 			<HeaderWithContext />
 			<Routes>
 				<Route path="/" element={<Courses />} />
@@ -54,7 +54,7 @@ function App() {
 				<Route path="/signout" element={<UserSignOutWithContext />} />
 				<Route path="/notfound" element={<NotFound />} />
 			</Routes>
-		</div>
+		</main>
 	);
 }
 
