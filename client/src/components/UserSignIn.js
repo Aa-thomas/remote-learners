@@ -37,7 +37,7 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 			.catch((err) => {
 				setFormData((prevState) => ({
 					...prevState,
-					errors: ['Sign-in was unsuccessful'],
+					errors: [err.response.data.message],
 				}));
 				console.log('Sign In Error', err);
 			});
@@ -64,7 +64,8 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 								type="text"
 								value={email}
 								onChange={handleChange}
-								placeholder="User Name"
+								placeholder="Email"
+								required
 							/>
 							<input
 								id="password"
@@ -73,6 +74,7 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 								value={password}
 								onChange={handleChange}
 								placeholder="Password"
+								required
 							/>
 						</>
 					)}
