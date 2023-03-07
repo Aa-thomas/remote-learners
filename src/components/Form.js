@@ -1,4 +1,4 @@
-export default (props) => {
+const Form = (props) => {
 	const { cancel, errors, submit, submitButtonText, elements } = props;
 
 	const handleSubmit = (event) => {
@@ -50,3 +50,5 @@ function ErrorsDisplay({ errors }) {
 
 	return errorsDisplay;
 }
+
+export default Form;

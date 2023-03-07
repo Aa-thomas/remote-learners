@@ -1,53 +1,60 @@
-import { createContext, useState } from 'react';
-import Data from './Data';
-import Cookies from 'js-cookie';
+import config from './config';
+import axios from 'axios';
 
-export const Context = createContext();
+const Data = () => {
+	const api = async (
+		path,
+		method = 'GET',
+		requiresAuth = false,
+		data = null
+	) => {
+		let requestConfig = {
+			url: config.apiBaseUrl + path,
+			method,
+			headers: {
+				'Content-Type': 'application/json; charset=utf-8',
+			},
+			data,
+		};
 
-const Provider = ({ children }) => {
-	const [data] = useState(Data());
-	const [cookie] = useState(Cookies.get('authenticatedUser'));
-	const [authenticatedUser, setAuthenticatedUser] = useState(
-		cookie ? JSON.parse(cookie) : null
-	);
+		if (requiresAuth) {
+			requestConfig.auth = {
+				username: data.email,
+				password: data.password,
+			};
+		}
 
-	const signIn = async (email, password) => {
-		const user = await data.getUser(email, password);
+		return axios(requestConfig);
+	};
 
-		if (user !== null) {
-			setAuthenticatedUser(user);
-			Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
-			return user;
+	const getUser = async (email, password) => {
+		const response = await api(`/users`, 'GET', true, {
+			email,
+			password,
+		});
+		if (response.status === 200) {
+			return response.data;
+		} else if (response.status === 401) {
+			return null;
+		} else {
+			throw new Error();
 		}
 	};
 
-	const signOut = () => {
-		setAuthenticatedUser(null);
-		Cookies.remove('authenticatedUser');
+	const createUser = async (user) => {
+		const response = await api(`/users`, 'POST', false, user);
+		if (response.status === 201) {
+			return [];
+		} else if (response.status === 400) {
+			return response.json().then((data) => {
+				return data.errors;
+			});
+		} else {
+			throw new Error();
+		}
 	};
 
-	const value = {
-		authenticatedUser,
-		data,
-		actions: {
-			signIn,
-			signOut,
-		},
-	};
-
-	return <Context.Provider value={value}>{children}</Context.Provider>;
+	return { api, getUser, createUser };
 };
 
-const Consumer = Context.Consumer;
-
-const withContext = (Component) => {
-	return function ContextComponent(props) {
-		return (
-			<Context.Consumer>
-				{(context) => <Component {...props} context={context} />}
-			</Context.Consumer>
-		);
-	};
-};
-
-export { Provider, Consumer, withContext };
+export default Data;

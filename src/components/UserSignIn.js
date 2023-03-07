@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Form from './Form';
 
-const UserSignIn = ({ context, history, location }) => {
+const UserSignIn = ({ context, location = { state: null } }) => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -20,16 +21,18 @@ const UserSignIn = ({ context, history, location }) => {
 	};
 
 	const handleSubmit = () => {
-		const { from } = location.state || {
-			from: {
-				pathname: '/authenticated',
-			},
-		};
-		context.actions
+		// If a previous location state exists redirect the user there, otherwise redirect to home page
+		// const { from } = location.state
+		// 	? location.state
+		// 	: {
+		// 			pathname: '/',
+		// 	  };
+
+		TODO: context.actions
 			.signIn(email, password)
 			.then(() => {
 				console.log(`${email} is successfully signed in!`);
-				history.push(from);
+				navigate('/');
 			})
 			.catch((err) => {
 				setFormData((prevState) => ({
@@ -41,7 +44,7 @@ const UserSignIn = ({ context, history, location }) => {
 	};
 
 	const handleCancel = () => {
-		history.push('/');
+		navigate('/');
 	};
 
 	return (

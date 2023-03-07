@@ -12,18 +12,18 @@ import UserSignUp from 'components/UserSignUp';
 import NotFound from 'components/NotFound';
 import Header from 'components/Header';
 import { withContext } from 'context/UserContext';
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from 'components/PrivateRoute';
 
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const HeaderWithContext = withContext(Header);
-const AuthWithContext = withContext(Authenticated);
 const UserSignOutWithContext = withContext(UserSignOut);
+const PrivateRouteWithContext = withContext(PrivateRoute);
 
 function App() {
 	useEffect(() => {
-		axios('http://localhost:5000/api/users').then((result) =>
-			console.log(result)
+		axios('http://localhost:5000').then((result) =>
+			console.log(result.data.message)
 		);
 	});
 
@@ -32,8 +32,22 @@ function App() {
 			<HeaderWithContext />
 			<Routes>
 				<Route path="/" element={<Courses />} />
-				<Route path="/courses/create" element={<CreateCourse />} />
-				<Route path="/courses/:id/update" element={<UpdateCourse />} />
+				<Route
+					path="/courses/create"
+					element={
+						<PrivateRouteWithContext>
+							<CreateCourse />
+						</PrivateRouteWithContext>
+					}
+				/>
+				<Route
+					path="/courses/:id/update"
+					element={
+						<PrivateRouteWithContext>
+							<UpdateCourse />
+						</PrivateRouteWithContext>
+					}
+				/>
 				<Route path="/courses/:id" element={<CourseDetail />} />
 				<Route path="/signin" element={<UserSignInWithContext />} />
 				<Route path="/signup" element={<UserSignUpWithContext />} />

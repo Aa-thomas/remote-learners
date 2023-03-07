@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { withContext } from 'context/UserContext';
 import Form from './Form';
 
 const UserSignUp = ({ context, history }) => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		firstName: '',
 		lastName: '',
@@ -41,7 +42,7 @@ const UserSignUp = ({ context, history }) => {
 					`${email} is successfully signed up and authenticated!`
 				);
 				context.actions.signIn(email, password).then(() => {
-					history.push('/authenticated');
+					navigate('/');
 				});
 			})
 			.catch((err) => {
@@ -59,7 +60,7 @@ const UserSignUp = ({ context, history }) => {
 	};
 
 	const handleCancel = () => {
-		history.push('/');
+		navigate('/');
 	};
 
 	return (
@@ -126,4 +127,3 @@ const UserSignUp = ({ context, history }) => {
 };
 
 export default withContext(UserSignUp);
-

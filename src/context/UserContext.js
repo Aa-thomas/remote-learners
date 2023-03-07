@@ -1,10 +1,10 @@
 import { createContext, useState } from 'react';
-import Data from './Data';
+import Data from '../Data';
 import Cookies from 'js-cookie';
 
 export const Context = createContext();
 
-const Provider = ({ children }) => {
+const UserProvider = ({ children }) => {
 	const [data] = useState(Data());
 	const [cookie] = useState(Cookies.get('authenticatedUser'));
 	const [authenticatedUser, setAuthenticatedUser] = useState(
@@ -50,4 +50,4 @@ const withContext = (Component) => {
 	};
 };
 
-export { Provider, Consumer, withContext };
+export { UserProvider, Consumer, withContext };
