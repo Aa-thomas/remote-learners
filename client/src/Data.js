@@ -1,4 +1,4 @@
-import config from './config';
+import apiBaseUrl from './apiBaseUrl';
 import axios from 'axios';
 
 const Data = () => {
@@ -9,7 +9,7 @@ const Data = () => {
 		data = null
 	) => {
 		let requestConfig = {
-			url: config.apiBaseUrl + path,
+			url: apiBaseUrl + path,
 			method,
 			headers: {
 				'Content-Type': 'application/json; charset=utf-8',

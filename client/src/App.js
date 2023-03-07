@@ -28,33 +28,35 @@ function App() {
 	});
 
 	return (
-		<main>
+		<>
 			<HeaderWithContext />
-			<Routes>
-				<Route path="/" element={<Courses />} />
-				<Route
-					path="/courses/create"
-					element={
-						<PrivateRouteWithContext>
-							<CreateCourse />
-						</PrivateRouteWithContext>
-					}
-				/>
-				<Route
-					path="/courses/:id/update"
-					element={
-						<PrivateRouteWithContext>
-							<UpdateCourse />
-						</PrivateRouteWithContext>
-					}
-				/>
-				<Route path="/courses/:id" element={<CourseDetail />} />
-				<Route path="/signin" element={<UserSignInWithContext />} />
-				<Route path="/signup" element={<UserSignUpWithContext />} />
-				<Route path="/signout" element={<UserSignOutWithContext />} />
-				<Route path="/notfound" element={<NotFound />} />
-			</Routes>
-		</main>
+			<main>
+				<Routes>
+					<Route path="/" element={<Courses />} />
+					<Route
+						path="/courses/create"
+						element={
+							<PrivateRouteWithContext>
+								<CreateCourse />
+							</PrivateRouteWithContext>
+						}
+					/>
+					<Route
+						path="/courses/:id/update"
+						element={
+							<PrivateRouteWithContext>
+								<UpdateCourse />
+							</PrivateRouteWithContext>
+						}
+					/>
+					<Route path="/courses/:id" element={<CourseDetail />} />
+					<Route path="/signin" element={<UserSignInWithContext />} />
+					<Route path="/signup" element={<UserSignUpWithContext />} />
+					<Route path="/signout" element={<UserSignOutWithContext />} />
+					<Route path="/notfound" element={<NotFound />} />
+				</Routes>
+			</main>
+		</>
 	);
 }
 
