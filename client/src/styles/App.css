@@ -331,7 +331,7 @@ nav {
 
 /*  Courses */
 .course--module {
-	background: #7c689b;
+	background: #646cff;
 	border-radius: 0.5rem;
 	padding: 1.5rem;
 	margin-bottom: 1.5rem;
@@ -350,7 +350,7 @@ nav {
 }
 .course--add--module {
 	background: #ddd9e4;
-	color: #57496e;
+	color: #646cff;
 	font-weight: 300;
 	font-size: 1.25rem;
 }
@@ -358,14 +358,14 @@ nav {
 	width: 20px;
 	height: auto;
 	margin-right: 5px;
-	fill: #57496e;
+	fill: #646cff;
 }
 .course--detail--title {
 	padding-bottom: 0.25rem;
 	border-bottom: 1px solid #888;
 	margin: 3rem 0 0.5rem;
 	font-size: 0.9rem;
-	color: #555;
+	color: #fff;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
@@ -373,7 +373,7 @@ nav {
 	font-size: 2rem;
 	margin-bottom: 0.5rem;
 	font-weight: 700;
-	color: #47395e;
+	color: #646cff;
 }
 .course--detail--list {
 	font-weight: 300;
@@ -381,9 +381,15 @@ nav {
 	line-height: 1.5;
 }
 .actions--bar {
-	background: #e9e5f0;
+	background: rgb(36, 36, 36);
 	padding: 1rem 0;
 	margin: -2rem 0 2rem;
+}
+
+.actions--bar .wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 /* Form */
