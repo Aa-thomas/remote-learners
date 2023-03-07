@@ -33,7 +33,6 @@ const Form = (props) => {
 
 function ErrorsDisplay({ errors }) {
 	let errorsDisplay = null;
-	console.log('errors', errors);
 	if (errors.length) {
 		errorsDisplay = (
 			<div>

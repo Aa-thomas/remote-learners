@@ -26,12 +26,17 @@ const UserProvider = ({ children }) => {
 		Cookies.remove('authenticatedUser');
 	};
 
+	const api = () => {
+		return data.api;
+	}
+
 	const value = {
 		authenticatedUser,
 		data,
 		actions: {
 			signIn,
 			signOut,
+			api,
 		},
 	};
 
