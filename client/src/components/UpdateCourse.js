@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Form from './Form';
 
 const UpdateCourse = ({ context }) => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		title: '',
 		description: '',
@@ -12,6 +14,8 @@ const UpdateCourse = ({ context }) => {
 
 	const { title, description, estimatedTime, materialsNeeded, errors } =
 		formData;
+
+	const { email, password } = context;
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -25,6 +29,8 @@ const UpdateCourse = ({ context }) => {
 			description,
 			estimatedTime,
 			materialsNeeded,
+			email,
+			password,
 		};
 
 		context.actions
@@ -52,7 +58,7 @@ const UpdateCourse = ({ context }) => {
 	};
 
 	useEffect(() => {
-		context.actions
+		context.data
 			.getCourse()
 			.then((course) => {
 				setFormData((prevState) => ({
@@ -62,6 +68,7 @@ const UpdateCourse = ({ context }) => {
 					estimatedTime: course.estimatedTime,
 					materialsNeeded: course.materialsNeeded,
 				}));
+				console.log('Get course succeeded', course);
 			})
 			.catch((err) => {
 				// handle rejected promises
@@ -76,6 +83,8 @@ const UpdateCourse = ({ context }) => {
 				}
 			});
 	}, []);
+
+	console.log('context', context);
 
 	return (
 		<div className="wrapper">

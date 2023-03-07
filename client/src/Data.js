@@ -54,7 +54,67 @@ const Data = () => {
 		}
 	};
 
-	return { api, getUser, createUser };
+	const createCourse = async (course) => {
+		const response = await api(`/courses`, 'POST', true, course);
+		if (response.status === 201) {
+			return [];
+		} else if (response.status === 400) {
+			return response.json().then((data) => {
+				return data.errors;
+			});
+		} else {
+			throw new Error();
+		}
+	};
+
+	const getCourse = async (course) => {
+		const response = await api(`/users`, 'GET', true, {
+			course,
+		});
+		if (response.status === 200) {
+			return response.data;
+		} else if (response.status === 401) {
+			return null;
+		} else {
+			throw new Error();
+		}
+	};
+
+	const updateCourse = async (course) => {
+		const response = await api(`/courses`, 'UPDATE', true, course);
+		if (response.status === 201) {
+			return [];
+		} else if (response.status === 400) {
+			return response.json().then((data) => {
+				return data.errors;
+			});
+		} else {
+			throw new Error();
+		}
+	};
+
+	const deleteCourse = async (course) => {
+		const response = await api(`/courses`, 'DELETE', true, course);
+		if (response.status === 201) {
+			return [];
+		} else if (response.status === 400) {
+			return response.json().then((data) => {
+				return data.errors;
+			});
+		} else {
+			throw new Error();
+		}
+	};
+
+	return {
+		api,
+		getUser,
+		createUser,
+		createCourse,
+		getCourse,
+		updateCourse,
+		deleteCourse,
+	};
 };
 
 export default Data;

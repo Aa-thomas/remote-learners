@@ -19,6 +19,7 @@ const UserSignInWithContext = withContext(UserSignIn);
 const HeaderWithContext = withContext(Header);
 const UserSignOutWithContext = withContext(UserSignOut);
 const PrivateRouteWithContext = withContext(PrivateRoute);
+const UpdateCourseWithContext = withContext(UpdateCourse);
 
 function App() {
 	useEffect(() => {
@@ -45,7 +46,7 @@ function App() {
 						path="/courses/:id/update"
 						element={
 							<PrivateRouteWithContext>
-								<UpdateCourse />
+								<UpdateCourseWithContext />
 							</PrivateRouteWithContext>
 						}
 					/>
