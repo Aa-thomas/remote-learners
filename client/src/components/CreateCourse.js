@@ -1,57 +1,87 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Form from './Form';
+
 const CreateCourse = () => {
+	const navigate = useNavigate();
+	const [formData, setFormData] = useState({
+		title: '',
+		description: '',
+		estimatedTime: '',
+		materialsNeeded: '',
+		errors: [],
+	});
+
+	const { title, description, estimatedTime, materialsNeeded, errors } =
+		formData;
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prevState) => ({ ...prevState, [name]: value }));
+	};
+
+	const handleCancel = () => {
+		navigate('/');
+	};
+
+	const handleSubmit = () => {};
 	return (
 		<>
-			<div class="wrapper">
+			<div className="wrapper">
 				<h2>Create Course</h2>
-				<div class="validation--errors">
-					<h3>Validation Errors</h3>
-					<ul>
-						<li>Please provide a value for "Title"</li>
-						<li>Please provide a value for "Description"</li>
-					</ul>
-				</div>
-				<form>
-					<div class="main--flex">
-						<div>
-							<label for="courseTitle">Course Title</label>
-							<input
-								id="courseTitle"
-								name="courseTitle"
-								type="text"
-								value=""
-							/>
 
-							<p>By Joe Smith</p>
+				<Form
+					cancel={handleCancel}
+					errors={errors}
+					submit={handleSubmit}
+					submitButtonText="Create Course"
+					elements={() => (
+						<>
+							<div className="main--flex">
+								<div>
+									<label htmlFor="courseTitle">Course Title</label>
+									<input
+										id="courseTitle"
+										name="courseTitle"
+										type="text"
+										value={title}
+										onChange={handleChange}
+									/>
 
-							<label for="courseDescription">Course Description</label>
-							<textarea
-								id="courseDescription"
-								name="courseDescription"></textarea>
-						</div>
-						<div>
-							<label for="estimatedTime">Estimated Time</label>
-							<input
-								id="estimatedTime"
-								name="estimatedTime"
-								type="text"
-								value=""
-							/>
+									<p>By Joe Smith</p>
 
-							<label for="materialsNeeded">Materials Needed</label>
-							<textarea
-								id="materialsNeeded"
-								name="materialsNeeded"></textarea>
-						</div>
-					</div>
-					<button class="button" type="submit">
-						Create Course
-					</button>
-					<button
-						class="button button-secondary"
-						onclick="event.preventDefault(); location.href='index.html';">
-						Cancel
-					</button>
-				</form>
+									<label htmlFor="courseDescription">
+										Course Description
+									</label>
+									<textarea
+										id="courseDescription"
+										name="courseDescription"
+										onChange={handleChange}
+										value={description}></textarea>
+								</div>
+								<div>
+									<label htmlFor="estimatedTime">Estimated Time</label>
+									<input
+										id="estimatedTime"
+										name="estimatedTime"
+										type="text"
+										value={estimatedTime}
+										onChange={handleChange}
+									/>
+
+									<label htmlFor="materialsNeeded">
+										Materials Needed
+									</label>
+									<textarea
+										id="materialsNeeded"
+										name="materialsNeeded"
+										onChange={handleChange}
+										value={materialsNeeded}></textarea>
+								</div>
+							</div>
+						</>
+					)}
+				/>
 			</div>
 		</>
 	);
