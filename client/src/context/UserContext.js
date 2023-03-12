@@ -15,8 +15,12 @@ const UserProvider = ({ children }) => {
 		const user = await data.getUser(email, password);
 
 		if (user !== null) {
-			setAuthenticatedUser(user);
-			Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+			setAuthenticatedUser({ ...user, password });
+			Cookies.set(
+				'authenticatedUser',
+				JSON.stringify({ ...user, password }),
+				{ expires: 1 }
+			);
 			return user;
 		}
 	};
@@ -28,7 +32,7 @@ const UserProvider = ({ children }) => {
 
 	const api = () => {
 		return data.api;
-	}
+	};
 
 	const value = {
 		authenticatedUser,

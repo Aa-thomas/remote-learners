@@ -21,6 +21,7 @@ const HeaderWithContext = withContext(Header);
 const UserSignOutWithContext = withContext(UserSignOut);
 const PrivateRouteWithContext = withContext(PrivateRoute);
 const UpdateCourseWithContext = withContext(UpdateCourse);
+const CreateCourseWithContext = withContext(CreateCourse);
 
 function App() {
 	return (
@@ -35,7 +36,7 @@ function App() {
 							path="/courses/create"
 							element={
 								<PrivateRouteWithContext>
-									<CreateCourse />
+									<CreateCourseWithContext />
 								</PrivateRouteWithContext>
 							}
 						/>
