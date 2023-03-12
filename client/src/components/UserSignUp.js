@@ -64,7 +64,7 @@ const UserSignUp = ({ context, history }) => {
 	};
 
 	return (
-		<div className="wrapper">
+		<>
 			<div className="form--centered">
 				<h1>Sign Up</h1>
 				<Form
@@ -125,7 +125,7 @@ const UserSignUp = ({ context, history }) => {
 					to sign in!
 				</p>
 			</div>
-		</div>
+		</>
 	);
 };
 

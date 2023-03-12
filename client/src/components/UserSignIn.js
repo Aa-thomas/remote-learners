@@ -48,7 +48,7 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 	};
 
 	return (
-		<div className="wrapper">
+		<>
 			<div className="form--centered">
 				<h1>Sign In</h1>
 				<Form
@@ -84,7 +84,7 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 					to sign up!
 				</p>
 			</div>
-		</div>
+		</>
 	);
 };
 

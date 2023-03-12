@@ -1,5 +1,5 @@
 import 'styles/App.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Courses from 'components/Courses';
 import { Route, Routes } from 'react-router-dom';
@@ -13,6 +13,7 @@ import { NotFound, Forbidden, UnhandledError } from 'components/Errors';
 import Header from 'components/Header';
 import { withContext } from 'context/UserContext';
 import PrivateRoute from 'components/PrivateRoute';
+import config from 'config';
 
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
@@ -22,42 +23,39 @@ const PrivateRouteWithContext = withContext(PrivateRoute);
 const UpdateCourseWithContext = withContext(UpdateCourse);
 
 function App() {
-	useEffect(() => {
-		axios('http://localhost:5000').then((result) =>
-			console.log(result.data.message)
-		);
-	});
-
 	return (
 		<>
 			<HeaderWithContext />
 			<main>
-				<Routes>
-					<Route path="/" element={<Courses />} />
-					<Route
-						path="/courses/create"
-						element={
-							<PrivateRouteWithContext>
-								<CreateCourse />
-							</PrivateRouteWithContext>
-						}
-					/>
-					<Route
-						path="/courses/:id/update"
-						element={
-							<PrivateRouteWithContext>
-								<UpdateCourseWithContext />
-							</PrivateRouteWithContext>
-						}
-					/>
-					<Route path="/courses/:id" element={<CourseDetail />} />
-					<Route path="/signin" element={<UserSignInWithContext />} />
-					<Route path="/signup" element={<UserSignUpWithContext />} />
-					<Route path="/signout" element={<UserSignOutWithContext />} />
-					<Route path="/forbidden" element={<Forbidden />} />
-					<Route path="/error" element={<UnhandledError />} />
-					<Route path="/*" element={<NotFound />} />
-				</Routes>
+				<div className="wrapper">
+					<Routes>
+						{/* <Route path="/" element={<Home />} /> */}
+						<Route path="/courses" element={<Courses />} />
+						<Route
+							path="/courses/create"
+							element={
+								<PrivateRouteWithContext>
+									<CreateCourse />
+								</PrivateRouteWithContext>
+							}
+						/>
+						<Route
+							path="/courses/:id/update"
+							element={
+								<PrivateRouteWithContext>
+									<UpdateCourseWithContext />
+								</PrivateRouteWithContext>
+							}
+						/>
+						<Route path="/courses/:id" element={<CourseDetail />} />
+						<Route path="/signin" element={<UserSignInWithContext />} />
+						<Route path="/signup" element={<UserSignUpWithContext />} />
+						<Route path="/signout" element={<UserSignOutWithContext />} />
+						<Route path="/forbidden" element={<Forbidden />} />
+						<Route path="/error" element={<UnhandledError />} />
+						<Route path="/*" element={<NotFound />} />
+					</Routes>
+				</div>
 			</main>
 		</>
 	);

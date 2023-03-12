@@ -220,6 +220,16 @@ html {
 	color: #fff;
 }
 
+body {
+	background-color: rgb(36, 36, 36); /* Set the background color */
+	background-image: radial-gradient(
+		rgba(255, 255, 255, 0.1) 1px,
+		transparent 1px
+	); /* Set the background image using a radial gradient */
+	background-size: 20px 20px; /* Set the size of each dot in the grid */
+	background-position: center center; /* Center the background image */
+}
+
 h2 {
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -314,6 +324,7 @@ header {
 	display: block;
 	box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
 	z-index: 1;
+	font-size: 1rem;
 }
 
 header .wrapper {
@@ -390,6 +401,27 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.cardGrid {
+	padding: 20px 0;
+}
+.card {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+.cardMedia {
+	padding-top: 56.25%;
+}
+.cardContent {
+	flex-grow: 1;
+}
+
+.cardContent p {
+	font-weight: 100;
 }
 
 /* Form */

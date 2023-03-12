@@ -87,7 +87,7 @@ const UpdateCourse = ({ context }) => {
 	console.log('context', context);
 
 	return (
-		<div className="wrapper">
+		<>
 			<h2>Update Course</h2>
 			<Form
 				cancel={handleCancel}
@@ -187,7 +187,7 @@ const UpdateCourse = ({ context }) => {
 					</>
 				)}
 			/>
-		</div>
+		</>
 	);
 };
 

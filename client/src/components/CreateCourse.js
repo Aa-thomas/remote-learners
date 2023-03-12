@@ -27,7 +27,7 @@ const CreateCourse = () => {
 	const handleSubmit = () => {};
 	return (
 		<>
-			<div className="wrapper">
+
 				<h2>Create Course</h2>
 
 				<Form
@@ -82,7 +82,6 @@ const CreateCourse = () => {
 						</>
 					)}
 				/>
-			</div>
 		</>
 	);
 };
