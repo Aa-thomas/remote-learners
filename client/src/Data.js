@@ -55,6 +55,7 @@ const Data = () => {
 	};
 
 	const createCourse = async (course) => {
+		console.log('createCourse', course);
 		const response = await api(`/courses`, 'POST', true, course);
 		if (response.status === 201) {
 			return [];

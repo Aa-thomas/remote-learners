@@ -15,9 +15,14 @@ const CreateCourse = ({ context }) => {
 	const { title, description, estimatedTime, materialsNeeded, errors } =
 		formData;
 
+	const { email, password, authenticatedUser } = context;
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		setFormData((prevState) => ({ ...prevState, [name]: value }));
+		setFormData((prevState) => ({
+			...prevState,
+			[name]: value,
+		}));
 	};
 
 	const handleCancel = () => {
@@ -31,13 +36,15 @@ const CreateCourse = ({ context }) => {
 			description,
 			estimatedTime,
 			materialsNeeded,
+			email: authenticatedUser.email,
+			password: authenticatedUser.password,
 		};
 
-		context.actions
+		context.data
 			.createCourse(course)
 			.then(() => {
 				console.log(`${title} is successfully created!`);
-				navigate('/');
+				navigate('/courses');
 			})
 			.catch((err) => {
 				// handle rejected promises
@@ -53,7 +60,6 @@ const CreateCourse = ({ context }) => {
 			});
 	};
 
-	console.log('context', context);
 	return (
 		<>
 			<h2>Create Course</h2>
@@ -67,23 +73,24 @@ const CreateCourse = ({ context }) => {
 					<>
 						<div className="main--flex">
 							<div>
-								<label htmlFor="courseTitle">Course Title</label>
+								<label htmlFor="title">Course Title</label>
 								<input
-									id="courseTitle"
-									name="courseTitle"
+									id="title"
+									name="title"
 									type="text"
 									value={title}
 									onChange={handleChange}
 								/>
 
-								<p>By Joe Smith</p>
+								<p>
+									By{' '}
+									{`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
+								</p>
 
-								<label htmlFor="courseDescription">
-									Course Description
-								</label>
+								<label htmlFor="description">Course Description</label>
 								<textarea
-									id="courseDescription"
-									name="courseDescription"
+									id="description"
+									name="description"
 									onChange={handleChange}
 									value={description}></textarea>
 							</div>

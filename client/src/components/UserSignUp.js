@@ -115,7 +115,7 @@ const UserSignUp = ({ context, history }) => {
 								type="password"
 								value={confirmedPassword}
 								onChange={(e) => handleChange(e)}
-								placeholder="confirmedPassword"
+								placeholder="Confirmed Password"
 							/>
 						</>
 					)}

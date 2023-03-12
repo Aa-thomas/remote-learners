@@ -15,7 +15,7 @@ const UpdateCourse = ({ context }) => {
 	const { title, description, estimatedTime, materialsNeeded, errors } =
 		formData;
 
-	const { email, password } = context;
+	const { email, password, authenticatedUser } = context;
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -98,23 +98,24 @@ const UpdateCourse = ({ context }) => {
 					<>
 						<div className="main--flex">
 							<div>
-								<label htmlFor="courseTitle">Course Title</label>
+								<label htmlFor="title">Course Title</label>
 								<input
-									id="courseTitle"
-									name="courseTitle"
+									id="title"
+									name="title"
 									type="text"
 									value={title}
 									onChange={handleChange}
 								/>
 
-								<p>By Joe Smith</p>
+								<p>
+									By{' '}
+									{`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
+								</p>
 
-								<label htmlFor="courseDescription">
-									Course Description
-								</label>
+								<label htmlFor="description">Course Description</label>
 								<textarea
-									id="courseDescription"
-									name="courseDescription"
+									id="description"
+									name="description"
 									onChange={handleChange}
 									value={description}>
 									High-end furniture projects are great to dream about.
