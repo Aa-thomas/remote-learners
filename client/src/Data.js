@@ -69,6 +69,7 @@ const Data = () => {
 	};
 
 	const getCourse = async (course) => {
+		console.log('getCourse', course);
 		const response = await api(`/users`, 'GET', true, {
 			course,
 		});

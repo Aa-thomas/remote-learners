@@ -21,7 +21,12 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // setup CORS support
-app.use(cors());
+app.use(
+	cors({
+		origin: 'http://localhost:3000',
+		methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'UPDATE'],
+	})
+);
 
 // setup a friendly greeting for the root route
 app.get('/', (req, res) => {

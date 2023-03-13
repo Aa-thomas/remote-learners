@@ -26,7 +26,7 @@ const CreateCourse = ({ context }) => {
 	};
 
 	const handleCancel = () => {
-		navigate('/');
+		navigate('/courses');
 	};
 
 	const handleSubmit = () => {
