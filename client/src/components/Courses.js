@@ -1,13 +1,10 @@
 import {
 	Typography,
-	AppBar,
 	Card,
 	CardActions,
 	CardContent,
 	CardMedia,
-	CssBaseline,
 	Grid,
-	Toolbar,
 	Container,
 	Button,
 } from '@mui/material';

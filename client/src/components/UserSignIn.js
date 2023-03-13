@@ -28,7 +28,7 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 		// 			pathname: '/',
 		// 	  };
 
-		TODO: context.actions
+		context.actions
 			.signIn(email, password)
 			.then(() => {
 				console.log(`${email} is successfully signed in!`);

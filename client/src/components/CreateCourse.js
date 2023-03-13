@@ -15,7 +15,7 @@ const CreateCourse = ({ context }) => {
 	const { title, description, estimatedTime, materialsNeeded, errors } =
 		formData;
 
-	const { email, password, authenticatedUser } = context;
+	const { authenticatedUser } = context;
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;

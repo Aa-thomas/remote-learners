@@ -1,6 +1,4 @@
 import 'styles/App.css';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Courses from 'components/Courses';
 import { Route, Routes } from 'react-router-dom';
 import CreateCourse from 'components/CreateCourse';
@@ -13,7 +11,6 @@ import { NotFound, Forbidden, UnhandledError } from 'components/Errors';
 import Header from 'components/Header';
 import { withContext } from 'context/UserContext';
 import PrivateRoute from 'components/PrivateRoute';
-import config from 'config';
 
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
