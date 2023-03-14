@@ -202,7 +202,7 @@ router.put(
 			// Update the course in the database.
 			await course.update(req.body);
 			// Set the status to 204 No Content and end the response.
-			res.status(204).end();
+			res.header('Access-Control-Allow-Origin', '*').status(204).end();
 		}
 	})
 );

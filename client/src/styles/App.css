@@ -216,11 +216,7 @@ html {
 	font-size: 125%;
 	font-family: 'Gotham Rounded A', 'Gotham Rounded B', 'Gotham Rounded',
 		'Trebuchet MS', Helvetica, Arial, sans-serif;
-	background: rgb(36, 36, 36);
 	color: #fff;
-}
-
-body {
 	background-color: rgb(36, 36, 36); /* Set the background color */
 	background-image: radial-gradient(
 		rgba(255, 255, 255, 0.1) 1px,
@@ -319,8 +315,7 @@ textarea:focus {
 header {
 	background: black;
 	color: #fff;
-	padding: 1rem 0;
-	margin-bottom: 2rem;
+	padding: 2rem 0;
 	display: block;
 	box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
 	z-index: 1;
@@ -339,6 +334,14 @@ header .wrapper {
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 100vh;
+}
+
+h1 {
+	margin: 0;
+}
+
+h2 {
+	margin-top: 2rem;
 }
 
 nav {
@@ -402,7 +405,11 @@ nav {
 .actions--bar {
 	background: rgb(36, 36, 36);
 	padding: 1rem 0;
-	margin: -2rem 0 2rem;
+	margin: 0;
+}
+
+button.button a {
+	color: #fff;
 }
 
 .actions--bar .wrapper {
@@ -430,6 +437,12 @@ nav {
 
 .cardContent p {
 	font-weight: 100;
+}
+
+.forbidden-buttons {
+	display: flex;
+	gap: 10%;
+	align-items: center;
 }
 
 /* Form */

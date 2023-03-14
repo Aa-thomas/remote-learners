@@ -54,6 +54,7 @@ const UserSignUp = ({ context, history }) => {
 					}));
 					console.log('Sign up failed', err.response.data);
 				} else {
+					navigate('/error')
 					console.log('Sign up failed', err);
 				}
 			});
@@ -66,7 +67,7 @@ const UserSignUp = ({ context, history }) => {
 	return (
 		<>
 			<div className="form--centered">
-				<h1>Sign Up</h1>
+				<h2>Sign Up</h2>
 				<Form
 					cancel={handleCancel}
 					errors={errors}

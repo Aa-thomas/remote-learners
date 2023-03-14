@@ -5,7 +5,7 @@ const Header = ({ context }) => {
 	return (
 		<header>
 			<div className="wrapper">
-				<h1 className="header--logo">Remote Learning Managment System</h1>
+				<h1 className="header--logo">Remote Learners</h1>
 				<nav>
 					{authUser ? ( // if user is signed in, then show the following:
 						<>

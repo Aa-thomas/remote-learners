@@ -35,11 +35,17 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 				navigate('/');
 			})
 			.catch((err) => {
-				setFormData((prevState) => ({
-					...prevState,
-					errors: [err.response.data.message],
-				}));
-				console.log('Sign In Error', err);
+				// handle rejected promises
+				if (err.response?.status === 400) {
+					setFormData((prevState) => ({
+						...prevState,
+						errors: err.response.data.errors,
+					}));
+					console.log('Sign up failed', err.response.data);
+				} else {
+					navigate('/error');
+					console.log('Sign up failed', err);
+				}
 			});
 	};
 
@@ -50,7 +56,7 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 	return (
 		<>
 			<div className="form--centered">
-				<h1>Sign In</h1>
+				<h2>Sign In</h2>
 				<Form
 					cancel={handleCancel}
 					errors={errors}

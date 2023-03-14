@@ -56,67 +56,70 @@ const CreateCourse = ({ context }) => {
 					console.log('Create course failed', err.response.data);
 				} else {
 					console.log('Create course failed', err);
+					navigate('/error');
 				}
 			});
 	};
 
 	return (
 		<>
+			<div className="wrapper">
 			<h2>Create Course</h2>
 
-			<Form
-				cancel={handleCancel}
-				errors={errors}
-				submit={handleSubmit}
-				submitButtonText="Create Course"
-				elements={() => (
-					<>
-						<div className="main--flex">
-							<div>
-								<label htmlFor="title">Course Title</label>
-								<input
-									id="title"
-									name="title"
-									type="text"
-									value={title}
-									onChange={handleChange}
-								/>
+<Form
+	cancel={handleCancel}
+	errors={errors}
+	submit={handleSubmit}
+	submitButtonText="Create Course"
+	elements={() => (
+		<>
+			<div className="main--flex">
+				<div>
+					<label htmlFor="title">Course Title</label>
+					<input
+						id="title"
+						name="title"
+						type="text"
+						value={title}
+						onChange={handleChange}
+					/>
 
-								<p>
-									By{' '}
-									{`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
-								</p>
+					<p>
+						By{' '}
+						{`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
+					</p>
 
-								<label htmlFor="description">Course Description</label>
-								<textarea
-									id="description"
-									name="description"
-									onChange={handleChange}
-									value={description}></textarea>
-							</div>
-							<div>
-								<label htmlFor="estimatedTime">Estimated Time</label>
-								<input
-									id="estimatedTime"
-									name="estimatedTime"
-									type="text"
-									value={estimatedTime}
-									onChange={handleChange}
-								/>
+					<label htmlFor="description">Course Description</label>
+					<textarea
+						id="description"
+						name="description"
+						onChange={handleChange}
+						value={description}></textarea>
+				</div>
+				<div>
+					<label htmlFor="estimatedTime">Estimated Time</label>
+					<input
+						id="estimatedTime"
+						name="estimatedTime"
+						type="text"
+						value={estimatedTime}
+						onChange={handleChange}
+					/>
 
-								<label htmlFor="materialsNeeded">
-									Materials Needed
-								</label>
-								<textarea
-									id="materialsNeeded"
-									name="materialsNeeded"
-									onChange={handleChange}
-									value={materialsNeeded}></textarea>
-							</div>
-						</div>
-					</>
-				)}
-			/>
+					<label htmlFor="materialsNeeded">
+						Materials Needed
+					</label>
+					<textarea
+						id="materialsNeeded"
+						name="materialsNeeded"
+						onChange={handleChange}
+						value={materialsNeeded}></textarea>
+				</div>
+			</div>
+		</>
+	)}
+/>
+			</div>
 		</>
 	);
 };

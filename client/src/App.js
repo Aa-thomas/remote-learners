@@ -20,41 +20,43 @@ const UserSignOutWithContext = withContext(UserSignOut);
 const PrivateRouteWithContext = withContext(PrivateRoute);
 const UpdateCourseWithContext = withContext(UpdateCourse);
 const CreateCourseWithContext = withContext(CreateCourse);
+const CourseDetailWithContext = withContext(CourseDetail);
 
 function App() {
 	return (
 		<>
 			<HeaderWithContext />
 			<main>
-				<div className="wrapper">
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/courses" element={<Courses />} />
-						<Route
-							path="/courses/create"
-							element={
-								<PrivateRouteWithContext>
-									<CreateCourseWithContext />
-								</PrivateRouteWithContext>
-							}
-						/>
-						<Route
-							path="/courses/:id/update"
-							element={
-								<PrivateRouteWithContext>
-									<UpdateCourseWithContext />
-								</PrivateRouteWithContext>
-							}
-						/>
-						<Route path="/courses/:id" element={<CourseDetail />} />
-						<Route path="/signin" element={<UserSignInWithContext />} />
-						<Route path="/signup" element={<UserSignUpWithContext />} />
-						<Route path="/signout" element={<UserSignOutWithContext />} />
-						<Route path="/forbidden" element={<Forbidden />} />
-						<Route path="/error" element={<UnhandledError />} />
-						<Route path="/*" element={<NotFound />} />
-					</Routes>
-				</div>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/courses" element={<Courses />} />
+					<Route
+						path="/courses/create"
+						element={
+							<PrivateRouteWithContext>
+								<CreateCourseWithContext />
+							</PrivateRouteWithContext>
+						}
+					/>
+					<Route
+						path="/courses/:id/update"
+						element={
+							<PrivateRouteWithContext>
+								<UpdateCourseWithContext />
+							</PrivateRouteWithContext>
+						}
+					/>
+					<Route
+						path="/courses/:id"
+						element={<CourseDetailWithContext />}
+					/>
+					<Route path="/signin" element={<UserSignInWithContext />} />
+					<Route path="/signup" element={<UserSignUpWithContext />} />
+					<Route path="/signout" element={<UserSignOutWithContext />} />
+					<Route path="/forbidden" element={<Forbidden />} />
+					<Route path="/error" element={<UnhandledError />} />
+					<Route path="/*" element={<NotFound />} />
+				</Routes>
 			</main>
 		</>
 	);

@@ -52,8 +52,12 @@ const UpdateCourse = ({ context }) => {
 						errors: err.response.data.errors,
 					}));
 					console.log('Update course failed', err.response.data);
+				} else if (err.response?.status === 404) {
+					navigate('/notfound');
+				} else if (err.response?.status === 403) {
+					navigate('/forbidden');
 				} else {
-					console.log('Update course failed', err);
+					navigate('/error');
 				}
 			});
 	};
@@ -63,78 +67,92 @@ const UpdateCourse = ({ context }) => {
 	};
 
 	useEffect(() => {
-		axios(config.apiBaseUrl + `/courses/${params.id}`).then((result) => {
-			setCourse(result.data);
-			setFormData((prevState) => ({
-				...prevState,
-				title: result.data.title,
-				description: result.data.description,
-				estimatedTime: result.data.estimatedTime,
-				materialsNeeded: result.data.materialsNeeded,
-			}));
-			console.log(result.data);
-		});
+		axios(config.apiBaseUrl + `/courses/${params.id}`)
+			.then((result) => {
+				setCourse(result.data);
+				setFormData((prevState) => ({
+					...prevState,
+					title: result.data.title,
+					description: result.data.description,
+					estimatedTime: result.data.estimatedTime,
+					materialsNeeded: result.data.materialsNeeded,
+				}));
+				console.log(result.data);
+			})
+			.catch((err) => {
+				if (err.response.status === 404) {
+					navigate('/notfound');
+				} else if (err.response.status === 403) {
+					navigate('/forbidden');
+				} else {
+					navigate('/error');
+				}
+			});
 	}, [params.id]);
 
 	return (
 		<>
-			<h2>Update Course</h2>
-			<Form
-				cancel={handleCancel}
-				errors={errors}
-				submit={handleSubmit}
-				submitButtonText="Update Course"
-				elements={() => (
-					<>
-						<div className="main--flex">
-							<div>
-								<label htmlFor="title">Course Title</label>
-								<input
-									id="title"
-									name="title"
-									type="text"
-									value={title}
-									onChange={handleChange}
-								/>
+			<div className="wrapper">
+				<h2>Update Course</h2>
+				<Form
+					cancel={handleCancel}
+					errors={errors}
+					submit={handleSubmit}
+					submitButtonText="Update Course"
+					elements={() => (
+						<>
+							<div className="main--flex">
+								<div>
+									<label htmlFor="title">Course Title</label>
+									<input
+										id="title"
+										name="title"
+										type="text"
+										value={title}
+										onChange={handleChange}
+									/>
 
-								<p>
-									By{' '}
-									{`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
-								</p>
+									<p>
+										By{' '}
+										{`${authenticatedUser.firstName} ${authenticatedUser.lastName}`}
+									</p>
 
-								<label htmlFor="description">Course Description</label>
-								<textarea
-									id="description"
-									name="description"
-									onChange={handleChange}
-									value={description}>
-									{course.description}
-								</textarea>
+									<label htmlFor="description">
+										Course Description
+									</label>
+									<textarea
+										id="description"
+										name="description"
+										onChange={handleChange}
+										value={description}>
+										{course.description}
+									</textarea>
+								</div>
+								<div>
+									<label htmlFor="estimatedTime">Estimated Time</label>
+									<input
+										id="estimatedTime"
+										name="estimatedTime"
+										type="text"
+										value={estimatedTime}
+										onChange={handleChange}
+									/>
+
+									<label htmlFor="materialsNeeded">
+										Materials Needed
+									</label>
+									<textarea
+										id="materialsNeeded"
+										name="materialsNeeded"
+										onChange={handleChange}
+										value={materialsNeeded}
+									/>
+								</div>
 							</div>
-							<div>
-								<label htmlFor="estimatedTime">Estimated Time</label>
-								<input
-									id="estimatedTime"
-									name="estimatedTime"
-									type="text"
-									value={estimatedTime}
-									onChange={handleChange}
-								/>
-
-								<label htmlFor="materialsNeeded">
-									Materials Needed
-								</label>
-								<textarea
-									id="materialsNeeded"
-									name="materialsNeeded"
-									onChange={handleChange}
-									value={materialsNeeded}
-								/>
-							</div>
-						</div>
-					</>
-				)}
-			/>
+						</>
+					)}
+				/>
+			</div>
 		</>
 	);
 };
