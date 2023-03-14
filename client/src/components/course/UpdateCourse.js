@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Form from './Form';
+import Form from '../Form';
 import axios from 'axios';
-import config from '../config';
+import config from '../../config';
 
 const UpdateCourse = ({ context }) => {
 	const params = useParams();

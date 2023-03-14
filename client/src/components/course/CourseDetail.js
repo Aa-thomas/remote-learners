@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import config from '../config';
+import config from '../../config';
 
 const CourseDetail = () => {
 	const params = useParams();
@@ -10,22 +10,15 @@ const CourseDetail = () => {
 	useEffect(() => {
 		axios(config.apiBaseUrl + `/courses/${params.id}`).then((result) => {
 			setCourse(result.data);
-			console.log(result.data);
 		});
-	}, []);
+	}, [params.id]);
 	return (
 		<>
 			<div class="actions--bar">
 				<div class="wrapper">
-					<a class="button" href="update-course.html">
-						Update Course
-					</a>
-					<a class="button" href="#">
-						Delete Course
-					</a>
-					<a class="button button-secondary" href="index.html">
-						Return to List
-					</a>
+					<Link to={`/courses/${params.id}/update`}>Update Course</Link>
+					<Link to={`/courses/${params.id}/delete`}>Delete Course</Link>
+					<Link to="/courses">Return to List</Link>
 				</div>
 			</div>
 

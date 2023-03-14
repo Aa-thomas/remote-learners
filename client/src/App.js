@@ -1,16 +1,17 @@
 import 'styles/App.css';
-import Courses from 'components/Courses';
+import Courses from 'components/course/Courses';
 import { Route, Routes } from 'react-router-dom';
-import CreateCourse from 'components/CreateCourse';
-import UpdateCourse from 'components/UpdateCourse';
-import CourseDetail from 'components/CourseDetail';
-import UserSignIn from 'components/UserSignIn';
-import UserSignOut from 'components/UserSignOut';
-import UserSignUp from 'components/UserSignUp';
+import CreateCourse from 'components/course/CreateCourse';
+import UpdateCourse from 'components/course/UpdateCourse';
+import CourseDetail from 'components/course/CourseDetail';
+import UserSignIn from 'components/user/UserSignIn';
+import UserSignOut from 'components/user/UserSignOut';
+import UserSignUp from 'components/user/UserSignUp';
 import { NotFound, Forbidden, UnhandledError } from 'components/Errors';
 import Header from 'components/Header';
 import { withContext } from 'context/UserContext';
 import PrivateRoute from 'components/PrivateRoute';
+import Home from 'components/Home';
 
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
@@ -27,7 +28,7 @@ function App() {
 			<main>
 				<div className="wrapper">
 					<Routes>
-						{/* <Route path="/" element={<Home />} /> */}
+						<Route path="/" element={<Home />} />
 						<Route path="/courses" element={<Courses />} />
 						<Route
 							path="/courses/create"

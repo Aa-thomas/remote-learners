@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Form from './Form';
+import Form from '../Form';
 
 const UserSignIn = ({ context, location = { state: null } }) => {
 	const navigate = useNavigate();

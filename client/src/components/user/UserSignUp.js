@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { withContext } from 'context/UserContext';
-import Form from './Form';
+import Form from '../Form';
 
 const UserSignUp = ({ context, history }) => {
 	const navigate = useNavigate();
