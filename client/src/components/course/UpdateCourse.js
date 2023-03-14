@@ -74,7 +74,7 @@ const UpdateCourse = ({ context }) => {
 			}));
 			console.log(result.data);
 		});
-	}, []);
+	}, [params.id]);
 
 	return (
 		<>
