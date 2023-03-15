@@ -39,18 +39,21 @@ const UserSignIn = ({ context, location = { state: null } }) => {
 				if (err.response?.status === 400) {
 					setFormData((prevState) => ({
 						...prevState,
-						errors: err.response.data.errors,
+						errors: [err.response.data.errors],
 					}));
 					console.log('Sign up failed', err.response.data);
 				} else {
-					navigate('/error');
+					setFormData((prevState) => ({
+						...prevState,
+						errors: [err.response.data.message],
+					}));
 					console.log('Sign up failed', err);
 				}
 			});
 	};
 
 	const handleCancel = () => {
-		navigate('/');
+		navigate('/courses');
 	};
 
 	return (

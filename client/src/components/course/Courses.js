@@ -9,7 +9,7 @@ import {
 	Button,
 } from '@mui/material';
 import { Chance } from 'chance';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import config from 'config';
 import axios from 'axios';
@@ -22,7 +22,7 @@ const Courses = () => {
 		axios(config.apiBaseUrl + '/courses')
 			.then((result) => setCourses(result.data))
 			.catch((err) => navigate('/error'));
-	}, []);
+	}, [navigate]);
 
 	return (
 		<>

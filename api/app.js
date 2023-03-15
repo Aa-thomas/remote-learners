@@ -61,9 +61,8 @@ app.use((req, res) => {
 (async () => {
 	try {
 		await sequelize.authenticate();
-		console.log('Connection to database successful!');
 		await sequelize.sync({ force: false });
-		console.log('Synchronizing models');
+		console.log('Connection to database successful!');
 	} catch (err) {
 		console.log('ERROR! Connection to database unsuccessful!', err);
 	}
