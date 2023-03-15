@@ -17,11 +17,11 @@ const Data = () => {
 			data,
 		};
 
-		if (method === 'UPDATE') {
-			const proxyServer = 'https://cors-anywhere.herokuapp.com/';
-			requestConfig.url = proxyServer + config.apiBaseUrl + path;
-			console.log('helooooooo');
-		}
+		// if (method === 'PUT') {
+		// 	const proxyServer = 'https://cors-anywhere.herokuapp.com/';
+		// 	requestConfig.url = proxyServer + config.apiBaseUrl + path;
+		// 	console.log('helooooooo');
+		// }
 
 		if (requiresAuth) {
 			requestConfig.auth = {
@@ -89,8 +89,9 @@ const Data = () => {
 	};
 
 	const updateCourse = async (course) => {
-		const response = await api(`/courses`, 'UPDATE', true, course);
-		if (response.status === 201) {
+		const response = await api(`/courses/${course.id}`, 'PUT', true, course);
+		console.log('updateCourse', response);
+		if (response.status === 204) {
 			return [];
 		} else if (response.status === 400) {
 			return response.json().then((data) => {

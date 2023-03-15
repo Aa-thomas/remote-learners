@@ -8,7 +8,7 @@ class Database {
     this.courses = seedData.courses;
     this.users = seedData.users;
     this.enableLogging = enableLogging;
-    this.context = new Context('remotelearners-restapi.db', enableLogging);
+    this.context = new Context('remote-learners.db', enableLogging);
   }
 
   log(message) {

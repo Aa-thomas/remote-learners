@@ -5,6 +5,7 @@ import axios from 'axios';
 import config from '../../config';
 
 const UpdateCourse = ({ context }) => {
+	console.log(context);
 	const params = useParams();
 	const navigate = useNavigate();
 
@@ -34,6 +35,8 @@ const UpdateCourse = ({ context }) => {
 			description,
 			estimatedTime,
 			materialsNeeded,
+			id: params.id,
+			userId: authenticatedUser.id,
 			email: authenticatedUser.email,
 			password: authenticatedUser.password,
 		};
@@ -42,7 +45,7 @@ const UpdateCourse = ({ context }) => {
 			.updateCourse(course)
 			.then(() => {
 				console.log(`${title} is successfully updated!`);
-				navigate('/');
+				navigate(`/courses/${params.id}`);
 			})
 			.catch((err) => {
 				// handle rejected promises
@@ -57,6 +60,7 @@ const UpdateCourse = ({ context }) => {
 				} else if (err.response?.status === 403) {
 					navigate('/forbidden');
 				} else {
+					console.log('error', err);
 					navigate('/error');
 				}
 			});
