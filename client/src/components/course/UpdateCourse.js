@@ -92,7 +92,7 @@ const UpdateCourse = ({ context }) => {
 					navigate('/error');
 				}
 			});
-	}, []);
+	});
 
 	return (
 		<>
