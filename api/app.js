@@ -23,8 +23,8 @@ app.use(morgan('dev'));
 // setup CORS support
 app.use(
 	cors({
-		origin: 'http://localhost:3000',
-		methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'UPDATE'],
+		origin: 'https://remote-learners.vercel.app/*',
+		methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
 	})
 );
 
