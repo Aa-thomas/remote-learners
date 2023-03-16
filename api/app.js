@@ -31,7 +31,7 @@ app.use(
 // setup a friendly greeting for the root route
 app.get('/', (req, res) => {
 	res.json({
-		message: 'Welcome to my REST API project!',
+		message: 'Welcome to the remote learners rest api!',
 	});
 });
 
