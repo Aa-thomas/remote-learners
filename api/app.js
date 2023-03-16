@@ -22,10 +22,11 @@ app.use(morgan('dev'));
 
 // setup CORS support
 app.use(
-	cors({
-		origin: 'https://remote-learners.vercel.app',
-		methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-	})
+	cors()
+	// {
+	// origin: 'https://remote-learners.vercel.app',
+	// methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+	// }
 );
 
 // setup a friendly greeting for the root route
