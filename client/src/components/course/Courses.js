@@ -22,7 +22,7 @@ const Courses = () => {
 		axios(config.apiBaseUrl + '/courses')
 			.then((result) => setCourses(result.data))
 			.catch((err) => navigate('/error'));
-	});
+	}, [navigate]);
 
 	return (
 		<>

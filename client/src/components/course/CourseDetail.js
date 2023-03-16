@@ -21,7 +21,7 @@ const CourseDetail = ({ context }) => {
 					navigate('/error');
 				}
 			});
-	});
+	}, [params.id, navigate]);
 	return (
 		<>
 			<div className="wrapper">
