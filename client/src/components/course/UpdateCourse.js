@@ -5,7 +5,6 @@ import axios from 'axios';
 import config from '../../config';
 
 const UpdateCourse = ({ context }) => {
-	console.log(context);
 	const params = useParams();
 	const navigate = useNavigate();
 

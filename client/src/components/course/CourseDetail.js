@@ -29,7 +29,7 @@ const CourseDetail = ({ context }) => {
 				<div className="actions--bar">
 					<div className="wrapper">
 						{/* Render only if you are the authorized user of this course */}
-						{authUser.id === course.userId && (
+						{authUser?.id === course.userId && (
 							<>
 								<button className="button">
 									<Link to={`/courses/${params.id}/update`}>
