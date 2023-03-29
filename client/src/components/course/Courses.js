@@ -20,15 +20,11 @@ const Courses = ({ context }) => {
 	const chance = new Chance();
 
 	const authUser = context.authenticatedUser;
-	console.log(courses);
+	console.log('authuser', context);
 
 	useEffect(() => {
 		axios(config.apiBaseUrl + '/courses')
 			.then((result) => setCourses(result.data))
-			.catch((err) => navigate('/error'));
-
-		axios(`https://source.unsplash.com/random/count=${courses.length}`)
-			.then((result) => console.log(result))
 			.catch((err) => navigate('/error'));
 	}, [navigate]);
 
@@ -50,7 +46,7 @@ const Courses = ({ context }) => {
 										}}>
 										<CardMedia
 											className="cardMedia"
-											image="https:/source.unsplash.com/random"
+											image="https://source.unsplash.com/random?query=computers"
 											title={'image title'}
 										/>
 										<CardContent className="cardContent">
@@ -68,7 +64,7 @@ const Courses = ({ context }) => {
 												</Button>
 
 												{/* Render only if you are the authorized user of this course */}
-												{authUser.id === course.userId && (
+												{authUser?.id === course.userId && (
 													<Button size="small" color="primary">
 														<Link
 															to={`/courses/${course.id}/update`}>
