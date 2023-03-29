@@ -315,11 +315,11 @@ textarea:focus {
 header {
 	background: black;
 	color: #fff;
-	padding: 2rem 0;
 	display: block;
 	box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 	font-size: 1rem;
+	margin-bottom: -30px;
 }
 
 header .wrapper {
@@ -336,8 +336,19 @@ header .wrapper {
 	height: 100vh;
 }
 
-h1 {
-	margin: 0;
+.home-header-text {
+	position: relative;
+	top: 50%;
+}
+
+.home-header p {
+	font-size: 1.5rem;
+	font-weight: 300;
+}
+
+.home-header a {
+	display: block;
+	margin-top: 2rem;
 }
 
 h2 {
@@ -403,7 +414,6 @@ nav {
 	line-height: 1.5;
 }
 .actions--bar {
-	background: rgb(36, 36, 36);
 	padding: 1rem 0;
 	margin: 0;
 }
@@ -431,12 +441,21 @@ button.button a {
 .cardMedia {
 	padding-top: 56.25%;
 }
+
 .cardContent {
 	flex-grow: 1;
 }
 
 .cardContent p {
 	font-weight: 100;
+	overflow: hidden;
+}
+
+.line-clamp {
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .forbidden-buttons {

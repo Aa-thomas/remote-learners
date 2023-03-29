@@ -14,13 +14,21 @@ import { useState, useEffect } from 'react';
 import config from 'config';
 import axios from 'axios';
 
-const Courses = () => {
+const Courses = ({ context }) => {
 	const navigate = useNavigate();
 	const [courses, setCourses] = useState([]);
 	const chance = new Chance();
+
+	const authUser = context.authenticatedUser;
+	console.log(courses);
+
 	useEffect(() => {
 		axios(config.apiBaseUrl + '/courses')
 			.then((result) => setCourses(result.data))
+			.catch((err) => navigate('/error'));
+
+		axios(`https://source.unsplash.com/random/count=${courses.length}`)
+			.then((result) => console.log(result))
 			.catch((err) => navigate('/error'));
 	}, [navigate]);
 
@@ -42,14 +50,14 @@ const Courses = () => {
 										}}>
 										<CardMedia
 											className="cardMedia"
-											image="https://source.unsplash.com/random"
+											image="https:/source.unsplash.com/random"
 											title={'image title'}
 										/>
 										<CardContent className="cardContent">
 											<Typography gutterBottom variant="h5">
 												{course.title}
 											</Typography>
-											<Typography variant="p">
+											<Typography variant="p" className="line-clamp">
 												{course.description}
 											</Typography>
 											<CardActions>
@@ -58,12 +66,16 @@ const Courses = () => {
 														View
 													</Link>
 												</Button>
-												<Button size="small" color="primary">
-													<Link
-														to={`/courses/${course.id}/update`}>
-														Edit
-													</Link>
-												</Button>
+
+												{/* Render only if you are the authorized user of this course */}
+												{authUser.id === course.userId && (
+													<Button size="small" color="primary">
+														<Link
+															to={`/courses/${course.id}/update`}>
+															Edit
+														</Link>
+													</Button>
+												)}
 											</CardActions>
 										</CardContent>
 									</Card>

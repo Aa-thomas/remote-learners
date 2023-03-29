@@ -8,6 +8,7 @@ const CourseDetail = ({ context }) => {
 	const navigate = useNavigate();
 	const params = useParams();
 	const [course, setCourse] = useState([]);
+	const authUser = context.authenticatedUser;
 
 	useEffect(() => {
 		axios(config.apiBaseUrl + `/courses/${params.id}`)
@@ -27,7 +28,8 @@ const CourseDetail = ({ context }) => {
 			<div className="wrapper">
 				<div className="actions--bar">
 					<div className="wrapper">
-						{context.authenticatedUser ? (
+						{/* Render only if you are the authorized user of this course */}
+						{authUser.id === course.userId && (
 							<>
 								<button className="button">
 									<Link to={`/courses/${params.id}/update`}>
@@ -43,7 +45,7 @@ const CourseDetail = ({ context }) => {
 									<Link to="/courses">Return to List</Link>
 								</button>
 							</>
-						) : null}
+						)}
 					</div>
 				</div>
 

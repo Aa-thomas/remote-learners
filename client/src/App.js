@@ -21,6 +21,7 @@ const PrivateRouteWithContext = withContext(PrivateRoute);
 const UpdateCourseWithContext = withContext(UpdateCourse);
 const CreateCourseWithContext = withContext(CreateCourse);
 const CourseDetailWithContext = withContext(CourseDetail);
+const CoursesWithContext = withContext(Courses);
 
 function App() {
 	return (
@@ -29,7 +30,7 @@ function App() {
 			<main>
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/courses" element={<Courses />} />
+					<Route path="/courses" element={<CoursesWithContext />} />
 					<Route
 						path="/courses/create"
 						element={
