@@ -31,7 +31,15 @@ const Courses = ({ context }) => {
 	return (
 		<>
 			<div className="wrapper">
-				<h2>Courses</h2>
+				<div className="course--create">
+					<h2>Courses</h2>
+					{/* Render create course button only when an authorized user is signed in */}
+					{authUser && (
+						<button class="button">
+							<Link to="/courses/create">Create Course</Link>
+						</button>
+					)}
+				</div>
 				<Container className="cardGrid" maxWidth="lg">
 					<Grid>
 						<Grid container spacing={4}>
