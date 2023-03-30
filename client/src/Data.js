@@ -102,17 +102,17 @@ const Data = () => {
 		}
 	};
 
-	const deleteCourse = async (course) => {
-		const response = await api(`/courses`, 'DELETE', true, course);
-		if (response.status === 201) {
-			return [];
-		} else if (response.status === 400) {
-			return response.json().then((data) => {
-				return data.errors;
-			});
-		} else {
-			throw new Error();
+	const deleteCourse = async (courseId, authUser) => {
+		const response = await api(
+			`/courses/${courseId}`,
+			'DELETE',
+			true,
+			authUser
+		);
+		if (response !== 204) {
+			return response.data;
 		}
+		return null;
 	};
 
 	return {

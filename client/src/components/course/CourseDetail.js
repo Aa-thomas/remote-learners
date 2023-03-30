@@ -10,6 +10,19 @@ const CourseDetail = ({ context }) => {
 	const [course, setCourse] = useState([]);
 	const authUser = context.authenticatedUser;
 
+	// deletes course
+	const deleteCourse = async () => {
+		context.data
+			.deleteCourse(params.id, authUser)
+			.then(() => {
+				navigate('/courses');
+			})
+			.catch((err) => {
+				console.log(err);
+				navigate('/error');
+			});
+	};
+
 	useEffect(() => {
 		axios(config.apiBaseUrl + `/courses/${params.id}`)
 			.then((result) => {
@@ -36,10 +49,8 @@ const CourseDetail = ({ context }) => {
 										Update Course
 									</Link>
 								</button>
-								<button className="button">
-									<Link to={`/courses/${params.id}/delete`}>
-										Delete Course
-									</Link>
+								<button className="button" onClick={deleteCourse}>
+									Delete Course
 								</button>
 								<button className="button">
 									<Link to="/courses">Return to List</Link>
