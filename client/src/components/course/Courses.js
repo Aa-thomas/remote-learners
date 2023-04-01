@@ -20,7 +20,7 @@ const Courses = ({ context }) => {
 	const chance = new Chance();
 
 	const authUser = context.authenticatedUser;
-	console.log('authuser', context);
+
 
 	useEffect(() => {
 		axios(config.apiBaseUrl + '/courses')

@@ -80,7 +80,6 @@ const UpdateCourse = ({ context }) => {
 					estimatedTime: result.data.estimatedTime,
 					materialsNeeded: result.data.materialsNeeded,
 				}));
-				console.log(result.data);
 			})
 			.catch((err) => {
 				if (err.response.status === 404) {

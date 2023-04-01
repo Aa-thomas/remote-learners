@@ -41,7 +41,7 @@ const CourseDetail = ({ context }) => {
 			<div className="wrapper">
 				<div className="actions--bar">
 					<div className="wrapper">
-						{/* Render only if you are the authorized user of this course */}
+						{/* Render actions bar only if you are the authorized user of this course */}
 						{authUser?.id === course.userId && (
 							<>
 								<button className="button">
