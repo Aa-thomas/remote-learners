@@ -436,6 +436,10 @@ button.button a {
 	align-items: center;
 }
 
+input#thumbnail {
+	color: white;
+}
+
 .cardGrid {
 	padding: 20px 0;
 }
