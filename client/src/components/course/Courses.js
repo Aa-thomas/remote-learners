@@ -21,7 +21,6 @@ const Courses = ({ context }) => {
 
 	const authUser = context.authenticatedUser;
 
-
 	useEffect(() => {
 		axios(config.apiBaseUrl + '/courses')
 			.then((result) => setCourses(result.data))
@@ -45,6 +44,7 @@ const Courses = ({ context }) => {
 						<Grid container spacing={4}>
 							{courses.map((course) => (
 								<Grid item key={chance.guid()} xs={12} sm={6} md={4}>
+									{console.log('image', course)}
 									<Card
 										className="card"
 										sx={{
