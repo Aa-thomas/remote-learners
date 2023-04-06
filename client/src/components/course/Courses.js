@@ -44,7 +44,7 @@ const Courses = ({ context }) => {
 						<Grid container spacing={4}>
 							{courses.map((course) => (
 								<Grid item key={chance.guid()} xs={12} sm={6} md={4}>
-									{console.log('image', course)}
+									{console.log('course', course)}
 									<Card
 										className="card"
 										sx={{
@@ -54,7 +54,7 @@ const Courses = ({ context }) => {
 										}}>
 										<CardMedia
 											className="cardMedia"
-											image="https://source.unsplash.com/random?query=computers"
+											image={course.imageUrl}
 											title={'image title'}
 										/>
 										<CardContent className="cardContent">
